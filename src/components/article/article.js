@@ -94,7 +94,7 @@ const data = [
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
-
+function 
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
@@ -106,12 +106,58 @@ const data = [
 
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
-
+ document.querySelector
   Step 3: Don't forget to return something from your function!
-
+return
   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
 
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+const articles = document.querySelector('.articles')
+
+function articleMaker(data) {
+  const art = document.createElement('div');
+  const artTitle = document.createElement('h2');
+  const artDate = document.createElement('p');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const expandBtn = document.createElement('span');
+
+  art.appendChild(artTitle);
+  art.appendChild(artDate);
+  art.appendChild(p1);
+  art.appendChild(p2);
+  art.appendChild(p3);
+  art.appendChild(expandBtn);
+  console.log(art);
+
+  art.classList.add('article');
+  artDate.classList.add('date');
+  expandBtn.classList.add('expandButton');
+
+  artTitle.textContent = data.title;
+  artDate.textContent = data.date;
+  p1.textContent = data.firstParagraph;
+  p2.textContent = data.secondParagraph;
+  p3.textContent = data.thirdParagraph;
+
+
+
+return art;
+}
+
+const artElems = data.map(data => {
+  return articleMaker(data)
+})
+
+artElems.forEach( elem => {
+  articles.appendChild(elem)
+})
+
+data.forEach(data => {
+  const elem = articleMaker(data);
+  articles.appendChild(elem)
+})
