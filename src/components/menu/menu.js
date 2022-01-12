@@ -15,7 +15,7 @@ let menuItems = [
 
   <div class="menu">
     <ul>
-      {each menu item as an <li>}
+      {each menu item as an <li>} instead of nav use li like here 
     </ul>
   </div>
 
@@ -32,3 +32,17 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
+function menuMaker(array) {
+  const menu = document.createElement('div');
+  const ul = document.createElement('ul');
+  const li = document.createElement('li');
+
+  menu.appendChild(ul)
+
+  menu.classList.add('menu');
+
+  
+
+return menu
+}
+console.log(menuMaker)
