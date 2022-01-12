@@ -124,7 +124,7 @@ function articleMaker(data) {
   const p1 = document.createElement('p');
   const p2 = document.createElement('p');
   const p3 = document.createElement('p');
-  const expandBtn = document.createElement('span');
+  const expandBtn = document.createElement('p');
 
   art.appendChild(artTitle);
   art.appendChild(artDate);
@@ -132,7 +132,6 @@ function articleMaker(data) {
   art.appendChild(p2);
   art.appendChild(p3);
   art.appendChild(expandBtn);
-  console.log(art);
 
   art.classList.add('article');
   artDate.classList.add('date');
@@ -143,7 +142,11 @@ function articleMaker(data) {
   p1.textContent = data.firstParagraph;
   p2.textContent = data.secondParagraph;
   p3.textContent = data.thirdParagraph;
+  expandBtn.textContent = '+';
 
+  expandBtn.addEventListener('click', () => {
+    art.classList.toggle('article-open');
+  });
 
 
 return art;
@@ -157,7 +160,3 @@ artElems.forEach( elem => {
   articles.appendChild(elem)
 })
 
-data.forEach(data => {
-  const elem = articleMaker(data);
-  articles.appendChild(elem)
-})
